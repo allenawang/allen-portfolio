@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Allen Wang-Aryattawanich – Portfolio</title>
+  <meta name="description" content="Allen Wang-Aryattawanich — Finance & Data Science @ UIUC." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+const Icon = (pathProps) => ({size=18, className="", ...rest}) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...rest}>
+    {pathProps.map((p, i) => React.createElement(p.tag, {key:i, ...p.attrs}))}
+  </svg>
+);
+const Mail = Icon([{tag:'path', attrs:{d:'M4 4h16v16H4z', fill:'none'}},{tag:'polyline', attrs:{points:'22,6 12,13 2,6'} }]);
+const Linkedin = Icon([{tag:'path', attrs:{d:'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2'}},{tag:'rect', attrs:{x:'2', y:'9', width:'4', height:'14'}},{tag:'circle', attrs:{cx:'4', cy:'4', r:'2'}}]);
+const FileDown = Icon([{tag:'path', attrs:{d:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'}},{tag:'polyline', attrs:{points:'14 2 14 8 20 8'}},{tag:'path', attrs:{d:'M12 18v-6'}},{tag:'path', attrs:{d:'M8 14l4 4 4-4'}}]);
+const Calendar = Icon([{tag:'rect', attrs:{x:'3', y:'4', width:'18', height:'18', rx:'2'}},{tag:'line', attrs:{x1:'16', y1:'2', x2:'16', y2:'6'}},{tag:'line', attrs:{x1:'8', y1:'2', x2:'8', y2:'6'}},{tag:'line', attrs:{x1:'3', y1:'10', x2:'21', y2:'10'}}]);
+const Briefcase = Icon([{tag:'rect', attrs:{x:'2', y:'7', width:'20', height:'14', rx:'2', ry:'2'}},{tag:'path', attrs:{d:'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2'}},{tag:'path', attrs:{d:'M2 13h20'}}]);
+const Code2 = Icon([{tag:'polyline', attrs:{points:'16 18 22 12 16 6'}},{tag:'polyline', attrs:{points:'8 6 2 12 8 18'}},{tag:'line', attrs:{x1:'12', y1:'2', x2:'12', y2:'22'}}]);
+const Sparkles = Icon([{tag:'path', attrs:{d:'M12 3l1.5 3 3 1.5-3 1.5L12 12l-1.5-3L7.5 7.5l3-1.5L12 3z'}},{tag:'path', attrs:{d:'M19 13l.75 1.5L21 15.25 19.75 16 19 17.5 18.25 16 17 15.25l1.25-.75L19 13z'}}]);
+const Phone = Icon([{tag:'path', attrs:{d:'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.06a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z'}}]);
+
+
+// Illinois palette
+const ILLINOIS_BLUE = "#13294B";
+const ILLINOIS_ORANGE = "#E84A27";
+
+// --- Quick content ---
+const INFO = {
+  name: "Allen Wang-Aryattawanich",
+  tagline: (
+    <>
+      <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>Finance & Data Science</span>
+      {" "}@ <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>UIUC</span> — exploring the intersection of business and technology.
+    </>
+  ),
+  email: "awangaryattawanich@gmail.com",
+  linkedin: "https://www.linkedin.com/in/allenawang/",
+  resume: "/resume.pdf", // keep resume.pdf next to index.html
+  headshot: "/assets/headshot.jpg",
+};
+
+const INTRO = (
+  <>
+    My name is <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>Allen Wang-Aryattawanich</span>. I am a sophomore at the <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>University of Illinois at Urbana-Champaign</span> majoring in Finance and Data Science. I am interested in the intersection of business and technology. Professionally, I am looking at public sector consulting and product management.
+  </>
+);
+
+// skills (removed Figma/Notion per request)
+const SKILLS = [
+  { group: "Data & Analytics", items: ["Python", "SQL", "Pandas", "Tableau", "Excel", "Data Visualization"] },
+  { group: "Business & Product", items: ["Financial Modeling", "Strategy", "Product Sense", "User Research", "A/B Testing"] },
+  { group: "Tools", items: ["Git/GitHub", "Jupyter", "PowerPoint"] },
+];
+
+// clearbit logo helper (falls back to text if blocked)
+const logo = (domain) => `https://logo.clearbit.com/${domain}`;
+
+// Timeline (newest first)
+const TIMELINE = [
+  // 1) Illinois Business Consulting — New Consultant (Sep 2025 – Present)
+  {
+    title: "Illinois Business Consulting",
+    role: "New Consultant",
+    org: "Illinois Business Consulting",
+    date: "Sep 2025 – Present",
+    bullets: [
+      "Hosted weekly client meetings to present findings, analysis, and actionable steps.",
+      "Delivered research and slides for weekly meetings and deliverable workstreams.",
+    ],
+    logo: logo("ibc.illinois.edu"),
+  },
+  // 2) Ascend UIUC — Corporate Relations Director (May 2025 – Present)
+  {
+    title: "Ascend UIUC",
+    role: "Corporate Relations Director",
+    org: "UIUC Chapter",
+    date: "May 2025 – Present",
+    bullets: [
+      "Hosted events with 6 companies to connect members with recruiters.",
+      "Diversified company selection and ran weekly meetings with External Department.",
+    ],
+    logo: logo("ascendleadership.org"),
+  },
+  // 3) Siam Makro — Finance Intern (Jul 2025 – Aug 2025)
+  {
+    title: "Siam Makro Company Limited",
+    role: "Finance Intern",
+    org: "Siam Makro",
+    date: "Jul 2025 – Aug 2025",
+    bullets: [
+      "Analyzed store-level financials and presented insights to leadership.",
+      "Conducted on-site evaluations and recommended actions.",
+    ],
+    logo: logo("makro.co.th"),
+  },
+  // 4) CohnReznick — ACE Program (May 2025)
+  {
+    title: "CohnReznick",
+    role: "ACE Program Participant",
+    org: "Early-career professional development",
+    date: "May 2025",
+    bullets: [
+      "Selected participant; collaborated on team pitch project and placed 2nd of 4 teams.",
+    ],
+    logo: logo("cohnreznick.com"),
+  },
+  // 5) Ascend UIUC — Fundraising Director (Jan 2025 – May 2025)
+  {
+    title: "Ascend UIUC",
+    role: "Fundraising Director",
+    org: "UIUC Chapter",
+    date: "Jan 2025 – May 2025",
+    bullets: [
+      "Raised $1,023 through school fundraisers to drive organization engagement.",
+      "Partnered with 3 organizations on campus to increase fundraiser reach.",
+    ],
+    logo: logo("ascendleadership.org"),
+  },
+  // 6) Ascend UIUC — New Member (Aug 2024 – Dec 2024)
+  {
+    title: "Ascend UIUC",
+    role: "New Member",
+    org: "Professional Development Program",
+    date: "Aug 2024 – Dec 2024",
+    bullets: [
+      "Completed curriculum in networking, case prep, and Excel/PowerPoint fundamentals.",
+      "Delivered a team case presentation with client-ready slides and speaking.",
+    ],
+    logo: logo("ascendleadership.org"),
+  },
+  // 7) UIUC — Education (Aug 2024 – May 2028 expected)
+  {
+    title: "University of Illinois Urbana–Champaign",
+    role: "B.S. Finance & Data Science (Sophomore)",
+    org: "Gies College of Business",
+    date: "Aug 2024 – May 2028 (expected)",
+    bullets: [
+      "Coursework: statistics, programming, databases, corporate finance.",
+    ],
+    logo: logo("illinois.edu"),
+  },
+];
+
+// --- Dev sanity checks (non-blocking) ---
+if (typeof window !== "undefined") {
+  try {
+    const first = TIMELINE[0]?.title;
+    const last = TIMELINE[TIMELINE.length - 1]?.title;
+    if (first !== "Illinois Business Consulting" || last !== "University of Illinois Urbana–Champaign") {
+      console.warn("[Portfolio tests] Timeline order unexpected. Expected newest-first (IBC first, UIUC last).");
+    }
+  } catch (e) {
+    console.warn("[Portfolio tests] Skipped dev checks:", e);
+  }
+}
+
+const Chip = ({ children }) => (
+  <span className="text-sm px-3 py-1 rounded-full border border-white/20">{children}</span>
+);
+
+const Card = ({ children }) => (
+  <div className="rounded-2xl border border-white/10 p-6 bg-white/5">{children}</div>
+);
+
+const Section = ({ id, title, children }) => (
+  <section id={id} className="max-w-5xl mx-auto px-6 py-12">
+    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+      <span className="w-2 h-8 rounded" style={{ background: ILLINOIS_ORANGE }} />
+      {title}
+    </h2>
+    {children}
+  </section>
+);
+
+function Portfolio() {
+  return (
+    <div className="min-h-screen text-zinc-50 bg-[radial-gradient(1000px_600px_at_50%_-150px,rgba(19,41,75,0.35),transparent)] bg-[#13294B]">
+      {/* Header */}
+      <header className="sticky top-0 z-40 backdrop-blur bg-[#13294B]/80 border-b border-white/10">
+        <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-3 text-sm">
+          <a href="#home" className="font-semibold">AW</a>
+          <ul className="flex items-center gap-5">
+            <li><a href="#skills" className="hover:opacity-80">Skills</a></li>
+            <li><a href="#timeline" className="hover:opacity-80">Timeline</a></li>
+            <li><a href="#interests" className="hover:opacity-80">Interests</a></li>
+            <li><a href={INFO.linkedin} target="_blank" rel="noreferrer" className="hover:opacity-80">LinkedIn</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <section id="home" className="max-w-5xl mx-auto px-6 pt-12 pb-8">
+        <div className="grid md:grid-cols-[auto,1fr] gap-6 items-center">
+          <img src={INFO.headshot} alt="Allen headshot" className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-white/10 shadow-lg" />
+          <div>
+            <h1 className="text-3xl md:text-5xl font-bold">{INFO.name}</h1>
+            <p className="mt-3 text-lg text-zinc-200">{INFO.tagline}</p>
+            <p className="mt-3 text-base text-zinc-300 leading-relaxed">{INTRO}</p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a href={INFO.resume} download className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><FileDown size={18}/> Download Résumé</a>
+              <a href={`mailto:${INFO.email}`} className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><Mail size={18}/> Email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <Section id="skills" title="Skills">
+        <div className="grid md:grid-cols-3 gap-4">
+          {SKILLS.map((s) => (
+            <Card key={s.group}>
+              <div className="flex items-center gap-2 mb-2">
+                <Code2 size={18} />
+                <h3 className="font-semibold">{s.group}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {s.items.map((i) => (
+                  <Chip key={i}>{i}</Chip>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      {/* Timeline (newest first) */}
+      <Section id="timeline" title="Experience Timeline">
+        <div className="relative pl-6">
+          <div className="absolute left-2 top-0 bottom-0 w-px bg-white/10" />
+          <div className="space-y-6">
+            {TIMELINE.map((t, idx) => (
+              <div key={idx} className="relative">
+                <div className="absolute -left-[7px] w-3 h-3 rounded-full" style={{ background: ILLINOIS_ORANGE }} />
+                <Card>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      {t.logo && (<img src={t.logo} alt="logo" className="w-7 h-7 rounded bg-white/80 p-1" />)}
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <Briefcase size={18} />
+                          <h3 className="font-semibold text-lg">{t.title} — {t.role}</h3>
+                        </div>
+                        <p className="mt-1 text-sm text-zinc-300">{t.org}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-zinc-300">
+                      <Calendar size={16} /> {t.date}
+                    </div>
+                  </div>
+                  <ul className="mt-3 list-disc pl-5 space-y-1 text-zinc-100">
+                    {t.bullets.map((b, i) => (<li key={i}>{b}</li>))}
+                  </ul>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Interests */}
+      <Section id="interests" title="Interests">
+        <Card>
+          <div className="flex flex-wrap gap-2">
+            {["Public Sector Consulting","Product Management","Data-driven Policy","Fintech & Analytics"].map((i) => (
+              <Chip key={i}>{i}</Chip>
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      {/* Contact */}
+      <Section id="contact" title="Contact">
+        <Card>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <p className="text-zinc-200">Based in <strong>Sammamish, Washington</strong> — open to opportunities.</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a href={`mailto:${INFO.email}`} className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><Mail size={18}/> {INFO.email}</a>
+                <a href="tel:14255536123" className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><Phone size={18}/> (425) 553-6123</a>
+                <a href={INFO.resume} download className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><FileDown size={18}/> Download Résumé</a>
+              </div>
+            </div>
+            <form className="space-y-3" action={`mailto:${INFO.email}`} method="post" encType="text/plain">
+              <input className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2" placeholder="Your name" name="name" />
+              <input type="email" className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2" placeholder="Your email" name="email" />
+              <textarea className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2 min-h-[120px]" placeholder="Message" name="message" />
+              <button className="rounded-xl px-4 py-2 border border-white/10 hover:bg-white/10" type="submit">Send</button>
+            </form>
+          </div>
+        </Card>
+      </Section>
+
+      <footer className="border-t border-white/10 py-10 mt-10">
+        <div className="max-w-5xl mx-auto px-6 text-sm text-zinc-300">
+          <p>© {new Date().getFullYear()} {INFO.name}. Built with Tailwind.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Portfolio />);
+
+  </script>
+</body>
+</html>
