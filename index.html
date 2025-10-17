@@ -28,7 +28,6 @@ const Code2 = Icon([{tag:'polyline', attrs:{points:'16 18 22 12 16 6'}},{tag:'po
 const Sparkles = Icon([{tag:'path', attrs:{d:'M12 3l1.5 3 3 1.5-3 1.5L12 12l-1.5-3L7.5 7.5l3-1.5L12 3z'}},{tag:'path', attrs:{d:'M19 13l.75 1.5L21 15.25 19.75 16 19 17.5 18.25 16 17 15.25l1.25-.75L19 13z'}}]);
 const Phone = Icon([{tag:'path', attrs:{d:'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.06a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z'}}]);
 
-
 // Illinois palette
 const ILLINOIS_BLUE = "#13294B";
 const ILLINOIS_ORANGE = "#E84A27";
@@ -44,7 +43,7 @@ const INFO = {
   ),
   email: "awangaryattawanich@gmail.com",
   linkedin: "https://www.linkedin.com/in/allenawang/",
-  resume: "/resume.pdf", // keep resume.pdf next to index.html
+  resume: "/resume.pdf",
   headshot: "assets/headshot.jpg",
 };
 
@@ -54,114 +53,26 @@ const INTRO = (
   </>
 );
 
-// skills (removed Figma/Notion per request)
+// skills
 const SKILLS = [
   { group: "Data & Analytics", items: ["Python", "SQL", "Pandas", "Tableau", "Excel", "Data Visualization"] },
   { group: "Business & Product", items: ["Financial Modeling", "Strategy", "Product Sense", "User Research", "A/B Testing"] },
   { group: "Tools", items: ["Git/GitHub", "Jupyter", "PowerPoint"] },
 ];
 
-// clearbit logo helper (falls back to text if blocked)
+// logo helper
 const logo = (domain) => `https://logo.clearbit.com/${domain}`;
 
 // Timeline (newest first)
 const TIMELINE = [
-  // 1) Illinois Business Consulting — New Consultant (Sep 2025 – Present)
-  {
-    title: "Illinois Business Consulting",
-    role: "New Consultant",
-    org: "Illinois Business Consulting",
-    date: "Sep 2025 – Present",
-    bullets: [
-      "Hosted weekly client meetings to present findings, analysis, and actionable steps.",
-      "Delivered research and slides for weekly meetings and deliverable workstreams.",
-    ],
-    logo: logo("ibc.illinois.edu"),
-  },
-  // 2) Ascend UIUC — Corporate Relations Director (May 2025 – Present)
-  {
-    title: "Ascend UIUC",
-    role: "Corporate Relations Director",
-    org: "UIUC Chapter",
-    date: "May 2025 – Present",
-    bullets: [
-      "Hosted events with 6 companies to connect members with recruiters.",
-      "Diversified company selection and ran weekly meetings with External Department.",
-    ],
-    logo: logo("ascendleadership.org"),
-  },
-  // 3) Siam Makro — Finance Intern (Jul 2025 – Aug 2025)
-  {
-    title: "Siam Makro Company Limited",
-    role: "Finance Intern",
-    org: "Siam Makro",
-    date: "Jul 2025 – Aug 2025",
-    bullets: [
-      "Analyzed store-level financials and presented insights to leadership.",
-      "Conducted on-site evaluations and recommended actions.",
-    ],
-    logo: logo("makro.co.th"),
-  },
-  // 4) CohnReznick — ACE Program (May 2025)
-  {
-    title: "CohnReznick",
-    role: "ACE Program Participant",
-    org: "Early-career professional development",
-    date: "May 2025",
-    bullets: [
-      "Selected participant; collaborated on team pitch project and placed 2nd of 4 teams.",
-    ],
-    logo: logo("cohnreznick.com"),
-  },
-  // 5) Ascend UIUC — Fundraising Director (Jan 2025 – May 2025)
-  {
-    title: "Ascend UIUC",
-    role: "Fundraising Director",
-    org: "UIUC Chapter",
-    date: "Jan 2025 – May 2025",
-    bullets: [
-      "Raised $1,023 through school fundraisers to drive organization engagement.",
-      "Partnered with 3 organizations on campus to increase fundraiser reach.",
-    ],
-    logo: logo("ascendleadership.org"),
-  },
-  // 6) Ascend UIUC — New Member (Aug 2024 – Dec 2024)
-  {
-    title: "Ascend UIUC",
-    role: "New Member",
-    org: "Professional Development Program",
-    date: "Aug 2024 – Dec 2024",
-    bullets: [
-      "Completed curriculum in networking, case prep, and Excel/PowerPoint fundamentals.",
-      "Delivered a team case presentation with client-ready slides and speaking.",
-    ],
-    logo: logo("ascendleadership.org"),
-  },
-  // 7) UIUC — Education (Aug 2024 – May 2028 expected)
-  {
-    title: "University of Illinois Urbana–Champaign",
-    role: "B.S. Finance & Data Science (Sophomore)",
-    org: "Gies College of Business",
-    date: "Aug 2024 – May 2028 (expected)",
-    bullets: [
-      "Coursework: statistics, programming, databases, corporate finance.",
-    ],
-    logo: logo("illinois.edu"),
-  },
+  { title: "Illinois Business Consulting", role: "New Consultant", org: "Illinois Business Consulting", date: "Sep 2025 – Present", bullets: ["Hosted weekly client meetings to present findings, analysis, and actionable steps.", "Delivered research and slides for weekly meetings and deliverable workstreams."], logo: logo("ibc.illinois.edu") },
+  { title: "Ascend UIUC", role: "Corporate Relations Director", org: "UIUC Chapter", date: "May 2025 – Present", bullets: ["Hosted events with 6 companies to connect members with recruiters.", "Diversified company selection and ran weekly meetings with External Department."], logo: logo("ascendleadership.org") },
+  { title: "Siam Makro Company Limited", role: "Finance Intern", org: "Siam Makro", date: "Jul 2025 – Aug 2025", bullets: ["Analyzed store-level financials and presented insights to leadership.", "Conducted on-site evaluations and recommended actions."], logo: logo("makro.co.th") },
+  { title: "CohnReznick", role: "ACE Program Participant", org: "Early-career professional development", date: "May 2025", bullets: ["Selected participant; collaborated on team pitch project and placed 2nd of 4 teams."], logo: logo("cohnreznick.com") },
+  { title: "Ascend UIUC", role: "Fundraising Director", org: "UIUC Chapter", date: "Jan 2025 – May 2025", bullets: ["Raised $1,023 through school fundraisers to drive organization engagement.", "Partnered with 3 organizations on campus to increase fundraiser reach."], logo: logo("ascendleadership.org") },
+  { title: "Ascend UIUC", role: "New Member", org: "Professional Development Program", date: "Aug 2024 – Dec 2024", bullets: ["Completed curriculum in networking, case prep, and Excel/PowerPoint fundamentals.", "Delivered a team case presentation with client-ready slides and speaking."], logo: logo("ascendleadership.org") },
+  { title: "University of Illinois Urbana–Champaign", role: "B.S. Finance & Data Science (Sophomore)", org: "Gies College of Business", date: "Aug 2024 – May 2028 (expected)", bullets: ["Coursework: statistics, programming, databases, corporate finance."], logo: logo("illinois.edu") },
 ];
-
-// --- Dev sanity checks (non-blocking) ---
-if (typeof window !== "undefined") {
-  try {
-    const first = TIMELINE[0]?.title;
-    const last = TIMELINE[TIMELINE.length - 1]?.title;
-    if (first !== "Illinois Business Consulting" || last !== "University of Illinois Urbana–Champaign") {
-      console.warn("[Portfolio tests] Timeline order unexpected. Expected newest-first (IBC first, UIUC last).");
-    }
-  } catch (e) {
-    console.warn("[Portfolio tests] Skipped dev checks:", e);
-  }
-}
 
 const Chip = ({ children }) => (
   <span className="text-sm px-3 py-1 rounded-full border border-white/20">{children}</span>
@@ -232,7 +143,7 @@ function Portfolio() {
         </div>
       </Section>
 
-      {/* Timeline (newest first) */}
+      {/* Timeline */}
       <Section id="timeline" title="Experience Timeline">
         <div className="relative pl-6">
           <div className="absolute left-2 top-0 bottom-0 w-px bg-white/10" />
@@ -277,6 +188,13 @@ function Portfolio() {
         </Card>
       </Section>
 
+      {/* Blog Posts */}
+      <Section id="blog" title="Blog Posts">
+        <Card>
+          <p className="text-zinc-200">No blog posts yet.</p>
+        </Card>
+      </Section>
+
       {/* Contact */}
       <Section id="contact" title="Contact">
         <Card>
@@ -309,7 +227,6 @@ function Portfolio() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<Portfolio />);
-
   </script>
 </body>
 </html>
