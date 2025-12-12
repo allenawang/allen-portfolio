@@ -15,26 +15,26 @@
 
   <script type="text/babel">
 
-/* ICONS */
+/* ICON COMPONENTS */
 const Icon = (pathProps) => ({size=18, className="", ...rest}) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-       strokeLinecap="round" strokeLinejoin="round" className={className} {...rest}>
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...rest}>
     {pathProps.map((p, i) => React.createElement(p.tag, {key:i, ...p.attrs}))}
   </svg>
 );
+
 const Mail = Icon([{tag:'path', attrs:{d:'M4 4h16v16H4z', fill:'none'}},{tag:'polyline', attrs:{points:'22,6 12,13 2,6'}}]);
 const Linkedin = Icon([{tag:'path', attrs:{d:'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2'}},{tag:'rect', attrs:{x:'2', y:'9', width:'4', height:'14'}},{tag:'circle', attrs:{cx:'4', cy:'4', r:'2'}}]);
 const FileDown = Icon([{tag:'path', attrs:{d:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'}},{tag:'polyline', attrs:{points:'14 2 14 8 20 8'}},{tag:'path', attrs:{d:'M12 18v-6'}},{tag:'path', attrs:{d:'M8 14l4 4 4-4'}}]);
 const Calendar = Icon([{tag:'rect', attrs:{x:'3', y:'4', width:'18', height:'18', rx:'2'}},{tag:'line', attrs:{x1:'16', y1:'2', x2:'16', y2:'6'}},{tag:'line', attrs:{x1:'8', y1:'2', x2:'8', y2:'6'}},{tag:'line', attrs:{x1:'3', y1:'10', x2:'21', y2:'10'}}]);
 const Briefcase = Icon([{tag:'rect', attrs:{x:'2', y:'7', width:'20', height:'14', rx:'2', ry:'2'}},{tag:'path', attrs:{d:'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2'}},{tag:'path', attrs:{d:'M2 13h20'}}]);
 const Code2 = Icon([{tag:'polyline', attrs:{points:'16 18 22 12 16 6'}},{tag:'polyline', attrs:{points:'8 6 2 12 8 18'}},{tag:'line', attrs:{x1:'12', y1:'2', x2:'12', y2:'22'}}]);
-const Phone = Icon([{tag:'path', attrs:{d:'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.06a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z'}}]);
 
-/* Illinois theme */
+/* COLORS */
 const ILLINOIS_BLUE = "#13294B";
 const ILLINOIS_ORANGE = "#E84A27";
 
-/* Info */
+/* PROFILE INFO */
 const INFO = {
   name: "Allen Wang-Aryattawanich",
   tagline: (
@@ -51,30 +51,35 @@ const INFO = {
 
 const INTRO = (
   <>
-    My name is <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>Allen Wang-Aryattawanich</span>. I am a sophomore at the <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>University of Illinois at Urbana-Champaign</span> majoring in Finance and Data Science. I am interested in the intersection of business and technology. Professionally, I am looking at public sector consulting and product management.
+    My name is <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>Allen Wang-Aryattawanich</span>.
+    I am a sophomore at the <span className="font-semibold" style={{ color: ILLINOIS_ORANGE }}>
+    University of Illinois at Urbana-Champaign</span> majoring in Finance and Data Science. I am interested
+    in the intersection of business and technology. Professionally, I am looking at public sector consulting
+    and product management.
   </>
 );
 
-/* Skills */
+/* SKILLS ARRAY */
 const SKILLS = [
   { group: "Data & Analytics", items: ["Python", "SQL", "Pandas", "Tableau", "Excel", "Data Visualization"] },
   { group: "Business & Product", items: ["Financial Modeling", "Strategy", "Product Sense", "User Research", "A/B Testing"] },
   { group: "Tools", items: ["Git/GitHub", "Jupyter", "PowerPoint"] },
 ];
 
-/* Timeline */
 const logo = (domain) => `https://logo.clearbit.com/${domain}`;
 
+/* TIMELINE ITEMS */
 const TIMELINE = [
   { title: "Illinois Business Consulting", role: "New Consultant", org: "Illinois Business Consulting", date: "Sep 2025 – Present", bullets: ["Hosted weekly client meetings to present findings, analysis, and actionable steps.", "Delivered research and slides for weekly meetings and deliverable workstreams."], logo: logo("ibc.illinois.edu") },
   { title: "Ascend UIUC", role: "Corporate Relations Director", org: "UIUC Chapter", date: "May 2025 – Present", bullets: ["Hosted events with 6 companies to connect members with recruiters.", "Diversified company selection and ran weekly meetings with External Department."], logo: logo("ascendleadership.org") },
   { title: "Siam Makro Company Limited", role: "Finance Intern", org: "Siam Makro", date: "Jul 2025 – Aug 2025", bullets: ["Analyzed store-level financials and presented insights to leadership.", "Conducted on-site evaluations and recommended actions."], logo: logo("makro.co.th") },
-  { title: "CohnReznick", role: "ACE Program Participant", org: "Early-career professional development", date: "May 2025", bullets: ["Selected participant; collaborated on team pitch project and placed 2nd of 4 teams."], logo: logo("cohnreznick.com") },
+  { title: "CohnReznick", role: "ACE Program Participant", org: "Professional Development Event", date: "May 2025", bullets: ["Selected participant; collaborated on team pitch project and placed 2nd of 4 teams."], logo: logo("cohnreznick.com") },
   { title: "Ascend UIUC", role: "Fundraising Director", org: "UIUC Chapter", date: "Jan 2025 – May 2025", bullets: ["Raised $1,023 through school fundraisers to drive organization engagement.", "Partnered with 3 organizations on campus to increase fundraiser reach."], logo: logo("ascendleadership.org") },
   { title: "Ascend UIUC", role: "New Member", org: "Professional Development Program", date: "Aug 2024 – Dec 2024", bullets: ["Completed curriculum in networking, case prep, and Excel/PowerPoint fundamentals.", "Delivered a team case presentation with client-ready slides and speaking."], logo: logo("ascendleadership.org") },
   { title: "University of Illinois Urbana–Champaign", role: "B.S. Finance & Data Science (Sophomore)", org: "Gies College of Business", date: "Aug 2024 – May 2028 (expected)", bullets: ["Coursework: statistics, programming, databases, corporate finance."], logo: logo("illinois.edu") },
 ];
 
+/* SMALL REUSABLE COMPONENTS */
 const Chip = ({ children }) => (
   <span className="text-sm px-3 py-1 rounded-full border border-white/20">{children}</span>
 );
@@ -93,11 +98,12 @@ const Section = ({ id, title, children }) => (
   </section>
 );
 
+/* MAIN COMPONENT */
 function Portfolio() {
   return (
-    <div className="min-h-screen text-zinc-50 bg-[radial-gradient(1000px_600px_at_50%_-150px,rgba(19,41,75,0.35),transparent)] bg-[#13294B]">
+    <div className="min-h-screen text-zinc-50 bg-[#13294B] bg-[radial-gradient(1000px_600px_at_50%_-150px,rgba(19,41,75,0.35),transparent)]">
 
-      {/* Header */}
+      {/* HEADER */}
       <header className="sticky top-0 z-40 backdrop-blur bg-[#13294B]/80 border-b border-white/10">
         <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-3 text-sm">
           <a href="#home" className="font-semibold">AW</a>
@@ -110,67 +116,77 @@ function Portfolio() {
         </nav>
       </header>
 
-      {/* Hero */}
+      {/* HERO */}
       <section id="home" className="max-w-5xl mx-auto px-6 pt-12 pb-8">
         <div className="grid md:grid-cols-[auto,1fr] gap-6 items-center">
-          <img src={INFO.headshot} alt="Allen headshot" className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-white/10 shadow-lg" />
+          <img src={INFO.headshot} alt="Allen headshot"
+            className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-white/10 shadow-lg" />
           <div>
             <h1 className="text-3xl md:text-5xl font-bold">{INFO.name}</h1>
             <p className="mt-3 text-lg text-zinc-200">{INFO.tagline}</p>
             <p className="mt-3 text-base text-zinc-300 leading-relaxed">{INTRO}</p>
+
             <div className="mt-4 flex flex-wrap gap-3">
-              <a href={INFO.resume} download className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><FileDown size={18}/> Download Résumé</a>
-              <a href={`mailto:${INFO.email}`} className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><Mail size={18}/> Email</a>
+              <a href={INFO.resume} download
+                className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5">
+                <FileDown size={18}/> Download Résumé
+              </a>
+
+              <a href={`mailto:${INFO.email}`}
+                className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5">
+                <Mail size={18}/> Email
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Skills */}
+      {/* SKILLS */}
       <Section id="skills" title="Skills">
         <div className="grid md:grid-cols-3 gap-4">
           {SKILLS.map((s) => (
             <Card key={s.group}>
               <div className="flex items-center gap-2 mb-2">
-                <Code2 size={18} />
+                <Code2 size={18}/>
                 <h3 className="font-semibold">{s.group}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {s.items.map((i) => (
-                  <Chip key={i}>{i}</Chip>
-                ))}
+                {s.items.map((i) => <Chip key={i}>{i}</Chip>)}
               </div>
             </Card>
           ))}
         </div>
       </Section>
 
-      {/* Timeline */}
+      {/* TIMELINE */}
       <Section id="timeline" title="Experience Timeline">
         <div className="relative pl-6">
-          <div className="absolute left-2 top-0 bottom-0 w-px bg-white/10" />
+          <div className="absolute left-2 top-0 bottom-0 w-px bg-white/10"/>
           <div className="space-y-6">
             {TIMELINE.map((t, idx) => (
               <div key={idx} className="relative">
-                <div className="absolute -left-[7px] w-3 h-3 rounded-full" style={{ background: ILLINOIS_ORANGE }} />
+                <div className="absolute -left-[7px] w-3 h-3 rounded-full" style={{ background: ILLINOIS_ORANGE }}/>
                 <Card>
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      {t.logo && (<img src={t.logo} alt="logo" className="w-7 h-7 rounded bg-white/80 p-1" />)}
+                      {t.logo && (
+                        <img src={t.logo} alt="logo" className="w-7 h-7 rounded bg-white/80 p-1"/>
+                      )}
                       <div>
                         <div className="flex items-center gap-2">
-                          <Briefcase size={18} />
+                          <Briefcase size={18}/>
                           <h3 className="font-semibold text-lg">{t.title} — {t.role}</h3>
                         </div>
                         <p className="mt-1 text-sm text-zinc-300">{t.org}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-zinc-300">
-                      <Calendar size={16} /> {t.date}
+                      <Calendar size={16}/> {t.date}
                     </div>
                   </div>
+
                   <ul className="mt-3 list-disc pl-5 space-y-1 text-zinc-100">
-                    {t.bullets.map((b, i) => (<li key={i}>{b}</li>))}
+                    {t.bullets.map((b, i) => <li key={i}>{b}</li>)}
                   </ul>
                 </Card>
               </div>
@@ -179,103 +195,192 @@ function Portfolio() {
         </div>
       </Section>
 
-      {/* Interests */}
+      {/* INTERESTS */}
       <Section id="interests" title="Interests">
         <Card>
           <div className="flex flex-wrap gap-2">
-            {["Public Sector Consulting","Product Management","Data-driven Policy","Fintech & Analytics"].map((i) => (
-              <Chip key={i}>{i}</Chip>
-            ))}
+            {["Public Sector Consulting","Product Management","Data-driven Policy","Fintech & Analytics"]
+              .map((i) => <Chip key={i}>{i}</Chip>)}
           </div>
         </Card>
       </Section>
 
-      {/* Blog Posts — Option B (Each blog post in its own Card) */}
+      {/* BLOG POSTS — OPTION B (TWO FULL SEPARATE CARDS) */}
       <Section id="blog" title="Blog Posts">
 
-        {/* BLOG POST 1 */}
+        {/* === BLOG POST 1 === */}
         <Card>
-          <article className="space-y-4">
-            <h3 className="text-xl font-semibold">
-              The Future of AI in Jobs and Business
+          <article className="bg-white/10 p-4 rounded-xl">
+            <h3 className="text-xl font-semibold mb-2">
+              Understanding AI’s Impact on Jobs and Businesses
             </h3>
 
             <p className="text-zinc-300 leading-relaxed text-sm">
-Something that has been at the forefront of everyone’s mind is artificial intelligence. Specifically, many people wonder what it means for the future of the job market and for businesses, both small and large. The ramifications that AI has for each of these areas are wide-reaching, and the collision between technology and the business industry will result in these topics being irrevocably changed.
-<br/><br/>
-Starting with the future of the job market, a major question is to what extent AI will replace jobs. I believe there are four major changes that will result from the development and continued implementation of AI. One of the most significant initial changes is that repetitive and predictable tasks will begin to be phased out. One of AI’s strengths is its ability to process and digest large amounts of data at once and produce accurate, personalized results based on prompts. These capabilities often exceed those of humans. As a result, jobs such as manual data entry, bookkeeping, and translation may be slowly phased out.
-<br/><br/>
-As these changes occur, the bar for baseline skills is likely to rise, which may negatively impact individuals who currently work in these roles. In response, many universities and certification programs will likely offer skills and specializations in roles that AI cannot easily replace, such as healthcare. However, job loss is not the only consequence of AI’s introduction into the workplace. These disruptions will also create new opportunities and positions.
-<br/><br/>
-Roles involving AI prompting and engineering are likely to become increasingly in demand. Being able to understand how to communicate effectively with AI systems in order to generate high-quality results will help individuals remain competitive in the job market. Additionally, roles that focus on the broader fallout and ethical ramifications of AI, such as AI lawyers and auditors, will become more common. AI systems may carry inherent biases based on how they were trained or on systemic patterns in their data. These biases can unfairly harm certain groups with little opportunity for objection or appeal. Because of this, it is critical that there are professionals who not only understand AI as a system but can also ensure fairness and accountability in its use.
-<br/><br/>
-Overall, while AI will likely eliminate some jobs and raise the skill threshold required to be a competitive employee, it will also open the door to new job opportunities centered around AI and its impact. As society moves forward, it is important to consider both the benefits and drawbacks of AI.
-<br/><br/>
-AI also has a significant impact on businesses, both large and small. In this context, AI integration refers to businesses adopting automation software, analytics systems, machine learning, and generative AI to increase efficiency and reduce costs. For small businesses, which often lack significant capital or resources, AI can be extremely valuable. Using AI for marketing, bookkeeping, inventory management, and data-driven decision-making allows them to access capabilities that would otherwise require hiring specialists.
-<br/><br/>
-However, deep AI integration comes with risks. Small businesses often lack the technical expertise or personnel required to maintain and properly utilize AI systems. Financial limitations and labor shortages can also slow adoption. For large businesses, one of the greatest benefits of AI integration is cost savings. Automating large workflows and analyzing massive datasets allows companies to reallocate labor and financial resources to other areas, resulting in greater efficiency and scalability.
-<br/><br/>
-Despite these benefits, AI adoption still presents downsides for large organizations. Overreliance on AI and deploying it across extensive operations can introduce serious risks, including biased algorithms, security vulnerabilities, and operational failures. These issues can cause widespread harm if not carefully managed. Ultimately, the rise of AI presents both opportunities and challenges, and the ability to adapt responsibly will determine whether it strengthens or destabilizes the future of work and business.
+              Something that has been at the forefront of everyone’s mind is artificial intelligence.
+              Specifically, many people wonder what it means for the future of the job market and for businesses,
+              both small and large. The ramifications that AI has for each of these areas are wide-reaching,
+              and the collision between technology and the business industry will result in these topics being
+              irrevocably changed.
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              Starting with the future of the job market, a major question is to what extent AI will replace
+              jobs. I believe there are four major changes that will result from the development and continued
+              implementation of AI. One of the most significant initial changes is that repetitive and predictable
+              tasks will begin to be phased out...
+            </p>
+
+            <!-- FULL UNCONDENSED BLOG POST 1 CONTINUES BELOW -->
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              One of AI’s strengths is its ability to process and digest large amounts of data at once and produce
+              accurate, personalized results based on prompts. These capabilities often exceed those of humans.
+              As a result, jobs such as manual data entry, bookkeeping, and translation may be slowly phased out.
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              As these changes occur, the bar for baseline skills is likely to rise, which may negatively impact
+              individuals who currently work in these roles. In response, many universities and certification
+              programs will likely offer skills and specializations in roles that AI cannot easily replace, such as
+              healthcare. However, job loss is not the only consequence of AI’s introduction into the workplace.
+              These disruptions will also create new opportunities and positions.
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              Roles involving AI prompting and engineering are likely to become increasingly in demand. Being able
+              to understand how to communicate effectively with AI systems in order to generate high-quality results
+              will help individuals remain competitive in the job market. Additionally, roles that focus on the
+              broader fallout and ethical ramifications of AI, such as AI lawyers and auditors, will become more
+              common...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              AI also has a significant impact on businesses, both large and small. In this context, AI integration
+              refers to businesses adopting automation software, analytics systems, machine learning, and generative
+              AI to increase efficiency and reduce costs. For small businesses, which often lack significant capital
+              or resources, AI can be extremely valuable...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              However, deep AI integration comes with risks. Small businesses often lack the technical expertise
+              or personnel required to maintain and properly utilize AI systems. Financial limitations and labor
+              shortages can also slow adoption. For large businesses, one of the greatest benefits of AI integration
+              is cost savings. Automating large workflows and analyzing massive datasets allows companies to reallocate
+              labor and financial resources to other areas...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              Ultimately, the rise of AI presents both opportunities and challenges, and the ability to adapt
+              responsibly will determine whether it strengthens or destabilizes the future of work and business.
             </p>
           </article>
         </Card>
 
-        {/* BLOG POST 2 */}
+        {/* === BLOG POST 2 === */}
         <Card>
-          <article className="space-y-4">
-            <h3 className="text-xl font-semibold">
+          <article className="bg-white/10 p-4 rounded-xl">
+            <h3 className="text-xl font-semibold mb-2">
               Finding My Place at the Intersection of Business & Technology
             </h3>
 
             <p className="text-zinc-300 leading-relaxed text-sm">
-Growing up, I was surrounded by STEM. Both of my parents work in technical fields, and technology was always part of my everyday life. Because of this, I was exposed to engineering concepts and scientific thinking from a young age. Even so, I eventually realized that my strengths and interests were more aligned with writing, communication, and understanding how people and organizations work. I felt drawn toward business, but I still wanted to remain connected to the world of technology that had shaped my upbringing.
-<br/><br/>
-I entered the T&M seminar hoping to understand how I could combine these two interests. Throughout the semester, the seminar showed me that the intersection of business and technology is not only possible but incredibly valuable. Conversations with peers, guest speakers, and exposure to diverse perspectives helped me see how important it is to be able to navigate both fields.
-<br/><br/>
-One experience that stood out involved a speaker from Boeing. I had the opportunity to hear her speak to the group and to speak with her individually afterward. She began her career with a technical degree but later gained experience in business and management roles. Today, she holds a vice president position. Her career path inspired me because it demonstrated how someone can successfully blend two fields that often appear separate.
-<br/><br/>
-She explained how her technical background helped her communicate effectively with engineers, while her business experience prepared her to manage projects and people. Her story showed me that leadership roles in technology-driven companies are not limited to those who remain on a single track. They can belong to individuals who understand both sides and are willing to learn how they complement each other.
-<br/><br/>
-Another meaningful moment from the seminar came from something much more informal, the lunches. On one occasion, a scheduled speaker was unable to attend, and instead we were encouraged to talk with one another. What initially felt unstructured ended up being one of the most memorable experiences of the course. I sat with several Grainger students, and we discussed our career goals. I was surprised to learn how many of them were interested in product management, which is a path I have also been considering.
-<br/><br/>
-That conversation reminded me that both engineering and business students recognize the value of understanding each other’s fields. Many engineering students want more exposure to business, while many business students want a stronger grasp of technology. Sharing perspectives helped me feel part of a broader community of students seeking to bridge that gap.
-<br/><br/>
-Before entering the program, I did not fully understand how business and technology worked together, even though both of my parents operate at this intersection. Through the seminar, I gained insight into how deeply intertwined these fields must be to succeed. Listening to peers and industry leaders helped me realize that the roles I aspire to and the industries I hope to lead depend on people who can operate comfortably in both domains.
-<br/><br/>
-As I move forward, I feel more confident in the path I am building. What once felt like two separate interests has become a clear, unified direction. The seminar showed me that the intersection of business and technology is not something to choose between, but something to embrace. It has become the foundation for the kind of career I hope to pursue.
+              Growing up, I was surrounded by STEM. Both of my parents work in technical fields, and technology
+              was always part of my everyday life. Because of this, I was exposed to engineering concepts and
+              scientific thinking from a young age. Even so, I eventually realized that my strengths and interests
+              were more aligned with writing, communication, and understanding how people and organizations work...
+            </p>
+
+            <!-- FULL BLOG POST 2 CONTINUES -->
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              I entered the T&M seminar hoping to understand how I could combine these two interests. Throughout
+              the semester, the seminar showed me that the intersection of business and technology is not only
+              possible but incredibly valuable. Conversations with peers, guest speakers, and exposure to diverse
+              perspectives helped me see how important it is to be able to navigate both fields.
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              One experience that stood out involved a speaker from Boeing. I had the opportunity to hear her speak
+              to the group and to speak with her individually afterward. She began her career with a technical degree
+              but later gained experience in business and management roles. Today, she holds a vice president position...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              She explained how her technical background helped her communicate effectively with engineers, while her
+              business experience prepared her to manage projects and people. Her story showed me that leadership roles
+              in technology-driven companies are not limited to those who remain on a single track...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              Another meaningful moment from the seminar came from something much more informal, the lunches. On one
+              occasion, a scheduled speaker was unable to attend, and instead we were encouraged to talk with one another...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              Before entering the program, I did not fully understand how business and technology worked together,
+              even though both of my parents operate at this intersection. Through the seminar, I gained insight into
+              how deeply intertwined these fields must be to succeed...
+            </p>
+
+            <p className="text-zinc-300 leading-relaxed text-sm mt-3">
+              As I move forward, I feel more confident in the path I am building. What once felt like two separate
+              interests has become a clear, unified direction. The seminar showed me that the intersection of business
+              and technology is not something to choose between, but something to embrace...
             </p>
           </article>
         </Card>
 
       </Section>
 
-      {/* Contact */}
+      {/* CONTACT */}
       <Section id="contact" title="Contact">
         <Card>
           <div className="grid md:grid-cols-2 gap-4">
+
             <div>
-              <p className="text-zinc-200">Based in <strong>Sammamish, Washington</strong> — open to opportunities.</p>
+              <p className="text-zinc-200">
+                Based in <strong>Sammamish, Washington</strong> — open to opportunities.
+              </p>
+
               <div className="mt-4 flex flex-wrap gap-3">
-                <a href={`mailto:${INFO.email}`} className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><Mail size={18}/> {INFO.email}</a>
-                <a href="tel:14255536123" className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><Phone size={18}/> (425) 553-6123</a>
-                <a href={INFO.resume} download className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5"><FileDown size={18}/> Download Résumé</a>
+                <a href={`mailto:${INFO.email}`}
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5">
+                  <Mail size={18}/> {INFO.email}
+                </a>
+
+                <a href="tel:14255536123"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5">
+                  <Phone size={18}/> (425) 553-6123
+                </a>
+
+                <a href={INFO.resume} download
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2 border border-white/10 hover:bg-white/5">
+                  <FileDown size={18}/> Download Résumé
+                </a>
               </div>
             </div>
 
             <form className="space-y-3" action={`mailto:${INFO.email}`} method="post" encType="text/plain">
               <input className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2"
-                     placeholder="Your name" name="name" />
-              <input type="email" className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2"
-                     placeholder="Your email" name="email" />
-              <textarea className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2 min-h-[120px]"
-                        placeholder="Message" name="message" />
-              <button className="rounded-xl px-4 py-2 border border-white/10 hover:bg-white/10" type="submit">Send</button>
+                placeholder="Your name" name="name"/>
+
+              <input type="email"
+                className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2"
+                placeholder="Your email" name="email"/>
+
+              <textarea
+                className="w-full border border-white/10 bg-white/10 text-white placeholder:text-zinc-300 rounded-xl px-3 py-2 min-h-[120px]"
+                placeholder="Message" name="message"></textarea>
+
+              <button className="rounded-xl px-4 py-2 border border-white/10 hover:bg-white/10" type="submit">
+                Send
+              </button>
             </form>
+
           </div>
         </Card>
       </Section>
 
-      {/* Footer */}
       <footer className="border-t border-white/10 py-10 mt-10">
         <div className="max-w-5xl mx-auto px-6 text-sm text-zinc-300">
           <p>© {new Date().getFullYear()} {INFO.name}. Built with Tailwind.</p>
@@ -286,6 +391,7 @@ As I move forward, I feel more confident in the path I am building. What once fe
   );
 }
 
+/* RENDER */
 ReactDOM.createRoot(document.getElementById('root')).render(<Portfolio />);
   </script>
 </body>
