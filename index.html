@@ -26,11 +26,13 @@ const Calendar = Icon([{tag:'rect', attrs:{x:'3', y:'4', width:'18', height:'18'
 const Briefcase = Icon([{tag:'rect', attrs:{x:'2', y:'7', width:'20', height:'14', rx:'2', ry:'2'}},{tag:'path', attrs:{d:'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2'}},{tag:'path', attrs:{d:'M2 13h20'}}]);
 const Code2 = Icon([{tag:'polyline', attrs:{points:'16 18 22 12 16 6'}},{tag:'polyline', attrs:{points:'8 6 2 12 8 18'}},{tag:'line', attrs:{x1:'12', y1:'2', x2:'12', y2:'22'}}]);
 const Sparkles = Icon([{tag:'path', attrs:{d:'M12 3l1.5 3 3 1.5-3 1.5L12 12l-1.5-3L7.5 7.5l3-1.5L12 3z'}},{tag:'path', attrs:{d:'M19 13l.75 1.5L21 15.25 19.75 16 19 17.5 18.25 16 17 15.25l1.25-.75L19 13z'}}]);
-const Phone = Icon([{tag:'path', attrs:{d:'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.06a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z'}}]);
+const Phone = Icon([{tag:'path', attrs:{d:'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.06a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z'}}]);
 
+// Illinois palette
 const ILLINOIS_BLUE = "#13294B";
 const ILLINOIS_ORANGE = "#E84A27";
 
+// --- Quick content ---
 const INFO = {
   name: "Allen Wang-Aryattawanich",
   tagline: (
@@ -51,14 +53,17 @@ const INTRO = (
   </>
 );
 
+// skills
 const SKILLS = [
   { group: "Data & Analytics", items: ["Python", "SQL", "Pandas", "Tableau", "Excel", "Data Visualization"] },
   { group: "Business & Product", items: ["Financial Modeling", "Strategy", "Product Sense", "User Research", "A/B Testing"] },
   { group: "Tools", items: ["Git/GitHub", "Jupyter", "PowerPoint"] },
 ];
 
+// logo helper
 const logo = (domain) => `https://logo.clearbit.com/${domain}`;
 
+// Timeline (newest first)
 const TIMELINE = [
   { title: "Illinois Business Consulting", role: "New Consultant", org: "Illinois Business Consulting", date: "Sep 2025 – Present", bullets: ["Hosted weekly client meetings to present findings, analysis, and actionable steps.", "Delivered research and slides for weekly meetings and deliverable workstreams."], logo: logo("ibc.illinois.edu") },
   { title: "Ascend UIUC", role: "Corporate Relations Director", org: "UIUC Chapter", date: "May 2025 – Present", bullets: ["Hosted events with 6 companies to connect members with recruiters.", "Diversified company selection and ran weekly meetings with External Department."], logo: logo("ascendleadership.org") },
@@ -90,7 +95,6 @@ const Section = ({ id, title, children }) => (
 function Portfolio() {
   return (
     <div className="min-h-screen text-zinc-50 bg-[radial-gradient(1000px_600px_at_50%_-150px,rgba(19,41,75,0.35),transparent)] bg-[#13294B]">
-
       {/* Header */}
       <header className="sticky top-0 z-40 backdrop-blur bg-[#13294B]/80 border-b border-white/10">
         <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-3 text-sm">
@@ -184,12 +188,15 @@ function Portfolio() {
         </Card>
       </Section>
 
-      {/* Blog Posts – UPDATED WITH SECOND POST */}
+      {/* Blog Posts – UPDATED WITH SCROLLABLE BLOG BOX */}
       <Section id="blog" title="Blog Posts">
         <Card>
           <div className="max-h-72 overflow-y-auto pr-2 space-y-4">
-
-<p className="text-zinc-300 leading-relaxed text-sm">
+            <article className="bg-white/10 p-4 rounded-xl">
+              <h3 className="text-xl font-semibold mb-2">
+                Finding My Place at the Intersection of Business & Technology
+              </h3>
+              <p className="text-zinc-300 leading-relaxed text-sm">
                 I grew up surrounded by STEM. Both of my parents work in technical fields, and technology was always part
                 of my everyday life. Because of that, I was exposed to engineering concepts and scientific thinking from a
                 young age. Even with all of this, I eventually realized that my strengths and natural interests were more
@@ -256,41 +263,6 @@ function Portfolio() {
         </Card>
       </Section>
 
-
-            {/* NEW AI BLOG POST */}
-            <article className="bg-white/10 p-4 rounded-xl">
-              <h3 className="text-xl font-semibold mb-2">
-                Understanding AI’s Impact on Jobs and Businesses
-              </h3>
-              <p className="text-zinc-300 leading-relaxed text-sm">
-                Artificial Intelligence is rapidly shaping the future of work and business. Many people wonder how deeply
-                it will affect job security, skill requirements, and how organizations operate...
-              </p>
-              <details className="mt-2 text-zinc-200">
-                <summary className="cursor-pointer hover:opacity-80 text-sm">
-                  Read more
-                </summary>
-                <div className="mt-2 text-sm text-zinc-300 leading-relaxed space-y-3">
-                  <p>Something that has been at the forefront of everyone’s mind is Artificial Intelligence. Specifically,
-                    many wonder what it means for the future of the job market and for businesses, both small and large...</p>
-                  <p>Starting off with the future of the job market, I wonder to what extent AI will replace jobs...</p>
-                  <p>As such, jobs such as manual data entry, bookkeeping, and translation will be slowly phased out...</p>
-                  <p>However, the loss of jobs caused by the introduction of AI into the workplace is not the only change...</p>
-                  <p>Roles involving AI prompting, engineering, and ethical oversight will continue to expand...</p>
-                  <p>I also wanted to consider how AI impacts businesses, both big and small...</p>
-                  <p>For small businesses, AI can enhance marketing, automate tasks, and support data-driven decisions...</p>
-                  <p>However, deep integration comes with risks, especially technical limitations and lack of expertise...</p>
-                  <p>Large businesses benefit from scale, efficiency, and advanced analytics, but also face vulnerabilities...</p>
-                  <p>In the end, the rise of AI presents both opportunities and challenges, and responsible adoption will
-                    determine its long-term impact...</p>
-                </div>
-              </details>
-            </article>
-
-          </div>
-        </Card>
-      </Section>
-
       {/* Contact */}
       <Section id="contact" title="Contact">
         <Card>
@@ -318,7 +290,6 @@ function Portfolio() {
           <p>© {new Date().getFullYear()} {INFO.name}. Built with Tailwind.</p>
         </div>
       </footer>
-
     </div>
   );
 }
