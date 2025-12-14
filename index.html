@@ -14,21 +14,60 @@
   <div id="root"></div>
 
   <script type="text/babel">
-
 /* ICON COMPONENTS */
 const Icon = (pathProps) => ({size=18, className="", ...rest}) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...rest}>
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...rest}
+  >
     {pathProps.map((p, i) => React.createElement(p.tag, {key:i, ...p.attrs}))}
   </svg>
 );
 
-const Mail = Icon([{tag:'path', attrs:{d:'M4 4h16v16H4z', fill:'none'}},{tag:'polyline', attrs:{points:'22,6 12,13 2,6'}}]);
-const Linkedin = Icon([{tag:'path', attrs:{d:'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2'}},{tag:'rect', attrs:{x:'2', y:'9', width:'4', height:'14'}},{tag:'circle', attrs:{cx:'4', cy:'4', r:'2'}}]);
-const FileDown = Icon([{tag:'path', attrs:{d:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'}},{tag:'polyline', attrs:{points:'14 2 14 8 20 8'}},{tag:'path', attrs:{d:'M12 18v-6'}},{tag:'path', attrs:{d:'M8 14l4 4 4-4'}}]);
-const Calendar = Icon([{tag:'rect', attrs:{x:'3', y:'4', width:'18', height:'18', rx:'2'}},{tag:'line', attrs:{x1:'16', y1:'2', x2:'16', y2:'6'}},{tag:'line', attrs:{x1:'8', y1:'2', x2:'8', y2:'6'}},{tag:'line', attrs:{x1:'3', y1:'10', x2:'21', y2:'10'}}]);
-const Briefcase = Icon([{tag:'rect', attrs:{x:'2', y:'7', width:'20', height:'14', rx:'2', ry:'2'}},{tag:'path', attrs:{d:'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2'}},{tag:'path', attrs:{d:'M2 13h20'}}]);
-const Code2 = Icon([{tag:'polyline', attrs:{points:'16 18 22 12 16 6'}},{tag:'polyline', attrs:{points:'8 6 2 12 8 18'}},{tag:'line', attrs:{x1:'12', y1:'2', x2:'12', y2:'22'}}]);
+const Mail = Icon([
+  {tag:'path', attrs:{d:'M4 4h16v16H4z', fill:'none'}},
+  {tag:'polyline', attrs:{points:'22,6 12,13 2,6'}}
+]);
+const Linkedin = Icon([
+  {tag:'path', attrs:{d:'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-14h4v2'}},
+  {tag:'rect', attrs:{x:'2', y:'9', width:'4', height:'14'}},
+  {tag:'circle', attrs:{cx:'4', cy:'4', r:'2'}}
+]);
+const FileDown = Icon([
+  {tag:'path', attrs:{d:'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'}},
+  {tag:'polyline', attrs:{points:'14 2 14 8 20 8'}},
+  {tag:'path', attrs:{d:'M12 18v-6'}},
+  {tag:'path', attrs:{d:'M8 14l4 4 4-4'}}
+]);
+const Calendar = Icon([
+  {tag:'rect', attrs:{x:'3', y:'4', width:'18', height:'18', rx:'2'}},
+  {tag:'line', attrs:{x1:'16', y1:'2', x2:'16', y2:'6'}},
+  {tag:'line', attrs:{x1:'8', y1:'2', x2:'8', y2:'6'}},
+  {tag:'line', attrs:{x1:'3', y1:'10', x2:'21', y2:'10'}}
+]);
+const Briefcase = Icon([
+  {tag:'rect', attrs:{x:'2', y:'7', width:'20', height:'14', rx:'2', ry:'2'}},
+  {tag:'path', attrs:{d:'M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2'}},
+  {tag:'path', attrs:{d:'M2 13h20'}}
+]);
+const Code2 = Icon([
+  {tag:'polyline', attrs:{points:'16 18 22 12 16 6'}},
+  {tag:'polyline', attrs:{points:'8 6 2 12 8 18'}},
+  {tag:'line', attrs:{x1:'12', y1:'2', x2:'12', y2:'22'}}
+]);
+
+/* FIX: Phone icon was referenced but not defined */
+const Phone = Icon([
+  {tag:'path', attrs:{d:'M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 4 4l1.58-1.58a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z'}}
+]);
 
 /* COLORS */
 const ILLINOIS_BLUE = "#13294B";
@@ -45,7 +84,8 @@ const INFO = {
   ),
   email: "awangaryattawanich@gmail.com",
   linkedin: "https://www.linkedin.com/in/allenawang/",
-  resume: "/resume.pdf",
+  /* FIX: relative path works on GitHub Pages */
+  resume: "resume.pdf",
   headshot: "assets/headshot.jpg",
 };
 
@@ -230,7 +270,7 @@ function Portfolio() {
               tasks will begin to be phased out...
             </p>
 
-            <!-- FULL UNCONDENSED BLOG POST 1 CONTINUES BELOW -->
+            {/* FULL UNCONDENSED BLOG POST 1 CONTINUES BELOW */}
 
             <p className="text-zinc-300 leading-relaxed text-sm mt-3">
               One of AI’s strengths is its ability to process and digest large amounts of data at once and produce
@@ -290,7 +330,7 @@ function Portfolio() {
               were more aligned with writing, communication, and understanding how people and organizations work...
             </p>
 
-            <!-- FULL BLOG POST 2 CONTINUES -->
+            {/* FULL BLOG POST 2 CONTINUES */}
 
             <p className="text-zinc-300 leading-relaxed text-sm mt-3">
               I entered the T&M seminar hoping to understand how I could combine these two interests. Throughout
